@@ -16,11 +16,23 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'KIMM_Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Giants-Inline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Inline.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 button{text-decoration: none; border: none;}
 body{max-width: 100%; height: 100vh;}
 .wrap { 
     max-width: 100%; height: 100vh;
-    margin-top:1.875em;
+ /*    margin-top:1.875em; */
      
 }
 .gnb {
@@ -29,6 +41,56 @@ body{max-width: 100%; height: 100vh;}
     width: 25%; height: 100vh;
     margin-top:-1.875em;
 }
+.Mobile {width: 100%;}
+.menu-trigger {
+    margin-right: 70px;
+    margin-bottom: 50px;
+    position: relative;
+    width: 50px;
+    height: 44px;
+  }
+  .menu-trigger,
+  .menu-trigger span {
+    display: none;
+    transition: all .4s;
+    box-sizing: border-box;
+  }  
+  .menu-trigger span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #000000;
+    border-radius: 4px;
+  }
+  
+  .menu-trigger span:nth-of-type(1) {
+    top: 0;
+  }
+  
+  .menu-trigger span:nth-of-type(2) {
+    top: 20px;
+  }
+  
+  .menu-trigger span:nth-of-type(3) {
+    bottom: 0;
+  }
+  
+  /* type-01 */
+  /* 중앙 라인이 고정된 자리에서 투명하게 사라지며 상하라인 회전하며 엑스자 만들기 */
+  .menu-trigger.active-1 span:nth-of-type(1) {
+    -webkit-transform: translateY (20px) rotate (-45deg);
+    transform: translateY(20px) rotate(-45deg);
+  }
+  
+  .menu-trigger.active-1 span:nth-of-type(2) {
+    opacity: 0;
+  }
+  
+  .menu-trigger.active-1 span:nth-of-type(3) {
+    -webkit-transform: translateY(-20px) rotate(45deg);
+    transform: translateY(-20px) rotate(45deg);
+  }
 .tab {
     position: fixed;
     float: left;
@@ -93,28 +155,36 @@ body{max-width: 100%; height: 100vh;}
     float: right;
     display: none;
 }
-.tab_content.on {display: block;}
+.tab_content.on {
+    display: block;
+    transition: all 1.5s;
+}
 .tab_contentHome {overflow: hidden;}
+
+.moMenuBg {display: none;}
 
 /* //gnb */
 
 .home {
-    width: 100%; height: 100vh;
-    position: relative;
+    width: 73%; height: 100vh;
+    position: absolute;
+    
 }
 .Home {position: relative;}
 .Myselfe {}
 .homeTitle { 
     font-size:4.938rem ;
-    margin-bottom: 1.250em;
+    margin: 0.625em 0 1.250em 0;
     position: relative;
     color: #ffff;
     font-weight: bold;
     text-shadow: 3px 8px 8px gray;
 }
 .hom {
-    font-family: 'NEXON Lv1 Gothic OTF';
-    font-size: 4rem;
+    z-index: 10;
+    font-family: 'Giants-Inline';
+    font-size: 2.938rem;
+    color: rgba(0, 0, 0, 0.7);
     line-height: 1.4;
     position: absolute;
     top: 50%; left: 0;   
@@ -130,7 +200,7 @@ body{max-width: 100%; height: 100vh;}
 
 /* myinfo */
 .myInfo { 
-    width: 100%; height:80vh;
+    width: 100%; height:70vh;
     border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
 }
 .myInfo img{
@@ -216,7 +286,6 @@ body{max-width: 100%; height: 100vh;}
     position: relative;
     float: left;
     margin-left: 0.625em;
-    
 }
 
 .infoUse ul li > img{ 
@@ -282,9 +351,12 @@ body{max-width: 100%; height: 100vh;}
     position: relative;
     color: #ffff;
     font-weight: bold;
-    text-shadow: 3px 8px 8px gray;
+    border-bottom-left-radius: 40px;
+    background: #947c5cec;
+    padding: 0 0 10px 20px;
+    margin-bottom: 50px;
 }
-.firsthomeTitle::before {
+/* .firsthomeTitle::before {
     content: "";
     position: absolute;
     top: 80%; left: 400px;
@@ -294,7 +366,7 @@ body{max-width: 100%; height: 100vh;}
     height: 50px;
     background: url("../img/logo3ce.png") no-repeat 0 0;
     background-size: 100%;
-}
+} */
 .firsthomeTitle > span {
     font-size: 2.938rem;
     color: rgba(0, 0, 0, 0.5);
@@ -343,8 +415,13 @@ body{max-width: 100%; height: 100vh;}
     top: 100%; left: 0;
 }
 .sTitle {
-    font-size:1.163rem ;
+    font-size:2.038rem ;
     margin-bottom:1.625em ;
+}
+.sTitle > span {
+    padding: 5px 7px;
+    font-weight: bold;
+    border-radius:6px ;
 }
 .before img {width: 100%;}
 .beforeArea {
@@ -519,10 +596,13 @@ body{max-width: 100%; height: 100vh;}
     font-size:4.938rem ;
     position: relative;
     color: #ffff;
+    background: rgb(189, 110, 46);
+    border-bottom-left-radius: 40px;
     font-weight: bold;
-    text-shadow: 3px 8px 8px gray;
+    padding: 0 0 10px 20px;
+    margin-bottom: 50px;
 }
-.secondhomeTitle::before {
+/* .secondhomeTitle::before {
     content: "";
     position: absolute;
     top:145px; left: 450px;
@@ -532,7 +612,7 @@ body{max-width: 100%; height: 100vh;}
     height: 100px;
     background: url("../img/sulwhasooLogo.png") no-repeat 0 0;
     background-size: 100%;
-}
+} */
 
 /* before */
 
@@ -605,19 +685,11 @@ body{max-width: 100%; height: 100vh;}
     font-size:4.938rem ;
     position: relative;
     color: #ffff;
+    background: rgb(83, 146, 189);
+    border-bottom-left-radius: 40px;
     font-weight: bold;
-    text-shadow: 3px 8px 8px gray;
-}
-.thirdhomeTitle::before {
-    content: "";
-    position: absolute;
-    top:100%; left: 850px;
-    transform: translateY(-85%);
-    display: block;
-    width: 200px;
-    height: 50px;
-    background: url("../img/HokkidiLogo.jpg") no-repeat 0 0;
-    background-size: 100%;
+    padding: 0 0 10px 20px;
+    margin-bottom: 50px;
 }
 
 /* before */
@@ -717,24 +789,16 @@ body{max-width: 100%; height: 100vh;}
     font-size:4.938rem ;
     position: relative;
     color: #ffff;
+    background: rgb(255, 218, 188);
+    border-bottom-left-radius: 40px;
     font-weight: bold;
-    text-shadow: 3px 8px 8px gray;
+    padding: 0 0 10px 20px;
+    margin-bottom: 50px;
 }
 .fourthhomeTitle > span {
     font-size: 2.938rem;
     color: rgba(0, 0, 0, 0.5);
     text-shadow: none;
-}
-.fourthhomeTitle::before {
-    content: "";
-    position: absolute;
-    top:120px; left: 1020px;
-    transform: translateY(-85%);
-    display: block;
-    width: 120px;
-    height: 120px;
-    background: url("../img/pacadLogo.png") no-repeat 0 0;
-    background-size: 100%;
 }
 
 /* before */
@@ -804,10 +868,8 @@ body{max-width: 100%; height: 100vh;}
     width: 21.250em;
 }
 .afterCont2 {
-    width: 100%; height: 100vh;
-    
+    width: 100%; height: 100vh;  
 }
-
 .order {
     width: 100%;
     position: absolute;
@@ -870,19 +932,11 @@ body{max-width: 100%; height: 100vh;}
     font-size:4.938rem ;
     position: relative;
     color: #ffff;
+    background: #ff0558;
+    border-bottom-left-radius: 40px;
     font-weight: bold;
-    text-shadow: 1px 6px 2px gray;
-}
-.fifthhomeTitle::before {
-    content: "";
-    position: absolute;
-    top:60% ; left: 730px;
-    transform: translateX(-60%);
-    display: block;
-    width: 80px;
-    height: 30px;
-    background: url("../img/WATCHA_Logo_Main.png") no-repeat 0 0;
-    background-size: 100%;
+    padding: 0 0 10px 20px;
+    margin-bottom: 50px;
 }
 
 .fifthhomeTitle > span {

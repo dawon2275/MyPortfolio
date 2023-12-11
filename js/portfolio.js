@@ -6,15 +6,6 @@ $('.hom').on('mouseout',function(){
 })
 
 
-
-$(function() {
-    $('.home').animate({
-        top: 0,
-        opacity: 1
-    })
-})
-
-
 $(function() {
     let tab = $('.tab li');
 
@@ -31,9 +22,46 @@ $(function() {
         $(this).siblings().removeClass('on')
 
         //tab_content에도 add/remove클래스 적용
-        tab_cont.addClass('on');
+        tab_cont.addClass('on')
         tab_cont.siblings().removeClass('on');
+    })
+    
+    $(function() {
+        $('.tab_content').stop().animate({
+            top: 0,
+            opacity: 1
+        },1000)
     })
     
 
 });
+
+/* var burger = $('.menu-trigger');
+
+burger.each(function(index){
+  var $this = $(this);
+  
+  $this.on('click', function(e){
+    e.preventDefault();
+    $(this).toggleClass('active-' + (index+1));
+  })
+}); */
+
+$(function () {
+    $('.menu-trigger').on('click', function (){
+        $(this).css('display','none')
+        $('.moMenuBg').css('display','block')
+        $('.moMenuList').stop().animate({
+            right : '0'
+        },200)
+        $('.close').css('display', 'block')
+    })
+    $('.close').on('click', function (){
+        $('.menu-trigger').css('display','block')
+        $('.moMenuBg').css('display','none')
+        $('.moMenuList').stop().animate({
+            right : '-45%'
+        },200)
+        $('.close').css('display', 'none')
+    })
+})
